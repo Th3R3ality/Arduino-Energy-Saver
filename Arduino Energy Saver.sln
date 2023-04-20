@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Arduino Energy Saver", "Arduino Energy Saver.vcxproj", "{0FA11BD6-8D69-4637-BC0C-75B2CF9401B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FA11BD6-8D69-4637-BC0C-75B2CF9401B8}.Debug|x64.ActiveCfg = Debug|x64
+		{0FA11BD6-8D69-4637-BC0C-75B2CF9401B8}.Debug|x64.Build.0 = Debug|x64
+		{0FA11BD6-8D69-4637-BC0C-75B2CF9401B8}.Release|x64.ActiveCfg = Release|x64
+		{0FA11BD6-8D69-4637-BC0C-75B2CF9401B8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {638E686C-47A9-48FC-9BF2-FF2EA9DCCCCC}
+	EndGlobalSection
+EndGlobal
