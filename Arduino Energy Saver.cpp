@@ -70,7 +70,7 @@ bool check_time(){
   if (power_off_from < power_off_to)
     return is_within(power_off_from, power_off_to, current_time);
   else
-    return !is_within(power_off_to, power_off_from, current_time);
+    return is_within(power_off_to, power_off_from, current_time);
 }
 
 bool is_within(unsigned long a, unsigned long b, unsigned long t){
