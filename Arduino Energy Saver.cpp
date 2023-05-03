@@ -68,13 +68,13 @@ void set_time(){
 bool check_time(){
   unsigned long current_time = (millis() + offset_milliseconds) % parse_timestamp("24:00");
   if (power_off_from < power_off_to)
-    return !is_within(power_off_from, power_off_to, current_time);
-  else
     return is_within(power_off_from, power_off_to, current_time);
+  else
+    return !is_within(power_off_to, power_off_from, current_time);
 }
 
 bool is_within(unsigned long a, unsigned long b, unsigned long t){
-  return (a > t && t < b);
+  return (a < t && t < b);
 }
 
 unsigned long milliseconds(int clock_time) {
