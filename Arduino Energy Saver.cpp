@@ -34,11 +34,7 @@ void loop()
       else if (input_buffer[0] == '/')
         set_time();
       else
-      {
         offset_milliseconds = parse_timestamp(input_buffer);
-        Serial.println("New time offset set.");
-        Serial.println(offset_milliseconds);
-      }
     }
   
   if (override_power || check_time())
@@ -78,9 +74,6 @@ bool check_time(){
 }
 
 bool is_within(unsigned long a, unsigned long b, unsigned long t){
-  //Serial.print("a: "); Serial.println(a);
-  //Serial.print("b: "); Serial.println(b);
-  //Serial.print("t: "); Serial.println(t);
   return (a > t && t < b);
 }
 
