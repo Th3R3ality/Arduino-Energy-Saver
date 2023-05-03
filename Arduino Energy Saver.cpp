@@ -15,8 +15,8 @@ bool is_within(unsigned long a, unsigned long b, unsigned long t);
 char input_buffer[INPUT_BUFFER_SIZE];
 unsigned long offset_milliseconds = 0;
 bool override_power = false;
-unsigned long power_off_from = 0, power_off_to = 0;
-
+unsigned long power_off_from = 0, power_off_to = 15000;
+char* _24_HOURS_ = (char*)"24:00";
 
 void setup()
 {
@@ -26,8 +26,8 @@ void setup()
 
 void loop()
 {
-	memset(input_buffer, 0x0, INPUT_BUFFER_SIZE);
-  	while (Serial.available() > 0){
+  memset(input_buffer, 0x0, INPUT_BUFFER_SIZE);
+    while (Serial.available() > 0){
       Serial.readString().toCharArray(input_buffer, INPUT_BUFFER_SIZE);
       if (input_buffer[0] == '!')
         override_power = !override_power;
@@ -44,12 +44,12 @@ void loop()
 }
 
 unsigned long parse_timestamp(char* input, int index_offset, int index_end){
-  	int clock_time = 0;
-  	if (index_end == 0)
+    int clock_time = 0;
+    if (index_end == 0)
       index_end = strlen(input);
     for (int idx = index_offset; idx < index_end; idx++){
         if (input[idx] >= '0' && input[idx] <= '9'){
-          	clock_time *= 10;
+            clock_time *= 10;
             clock_time += input[idx] - '0';
         }
     }
@@ -66,7 +66,7 @@ void set_time(){
 }
 
 bool check_time(){
-  unsigned long current_time = (millis() + offset_milliseconds) % parse_timestamp("24:00");
+  unsigned long current_time = (millis() + offset_milliseconds) % parse_timestamp(_24_HOURS_);
   if (power_off_from < power_off_to)
     return is_within(power_off_from, power_off_to, current_time);
   else
@@ -78,7 +78,7 @@ bool is_within(unsigned long a, unsigned long b, unsigned long t){
 }
 
 unsigned long milliseconds(int clock_time) {
-	unsigned long hours = (clock_time - (clock_time - static_cast<int>(clock_time / 100) * 100)) / 100;
-	unsigned long minutes = clock_time - hours * 100;
-  	return hours * 60 * 60 * 1000 + minutes * 60 * 1000;
+  unsigned long hours = (clock_time - (clock_time - static_cast<int>(clock_time / 100) * 100)) / 100;
+  unsigned long minutes = clock_time - hours * 100;
+    return hours * 60 * 60 * 1000 + minutes * 60 * 1000;
 }
